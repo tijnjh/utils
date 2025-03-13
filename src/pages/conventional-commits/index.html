@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>conventional commit generator</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <div class="wrap">
+      <label>
+        Select the type of change you're committing
+        <select id="type"></select>
+      </label>
+
+      <label>
+        Select the scope of this change (optional)
+        <input id="scope" />
+      </label>
+
+      <label>
+        Choose a gitmoji
+        <input id="gitmoji" list="gitmojis" />
+      </label>
+      <datalist id="gitmojis"></datalist>
+
+      <label>
+        Write a short, imperative tense description of the change
+        <input id="description" />
+      </label>
+
+      <button id="output"></button>
+      <!-- <button id="copy">copy</button>
+      <button id="copy-as-commit">copy as commit</button> -->
+    </div>
+
+    <div id="toaster"></div>
+  </body>
+</html>
