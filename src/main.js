@@ -37,4 +37,4 @@ router.get("/", (_, res) => {
 
 app.use("/", router);
 
-app.listen(8000);
+app.listen(3000);
