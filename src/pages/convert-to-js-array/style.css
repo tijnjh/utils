@@ -1,0 +1,25 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.wrap {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding: 1rem;
+  gap: 1rem;
+  height: 100svh;
+}
+
+#input {
+  resize: none;
+}
+
+#input,
+#output {
+  padding: 1rem;
+  border: 1px solid gray;
+  font-family: monospace;
+  font-size: 1rem;
+}
