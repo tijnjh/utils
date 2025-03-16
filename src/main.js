@@ -3,6 +3,8 @@ import fs from "fs/promises";
 import path from "path";
 import { fileURLToPath } from "url";
 
+const PORT = 4200;
+
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 const app = express();
@@ -38,4 +40,6 @@ router.get("/", (_, res) => {
 
 app.use("/", router);
 
-app.listen(4200);
+app.listen(PORT, () => {
+  console.log(`running on localhost:${PORT}`);
+});
