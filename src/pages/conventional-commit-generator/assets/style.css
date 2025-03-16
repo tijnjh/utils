@@ -74,6 +74,10 @@ select {
   }
 }
 
+button {
+  cursor: pointer;
+}
+
 #toaster {
   display: flex;
   position: absolute;
@@ -98,6 +102,18 @@ select {
   box-shadow: 0 1px 4px #00000020;
   margin-top: 1rem;
   max-width: 30rem;
+
+  &.info {
+    background-color: #5e81ac;
+  }
+
+  &.success {
+    background-color: #a3be8c;
+  }
+
+  &.error {
+    background-color: #bf616a;
+  }
 
   @starting-style {
     margin-top: 0;

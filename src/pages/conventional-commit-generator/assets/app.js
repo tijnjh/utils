@@ -4,6 +4,8 @@ const elGitmoji = document.getElementById("gitmoji");
 const elGitmojis = document.getElementById("gitmojis");
 const elDescription = document.getElementById("description");
 const elOutput = document.getElementById("output");
+const elCopy = document.getElementById("copy");
+const elCopyCommit = document.getElementById("copy-commit");
 
 const elToaster = document.getElementById("toaster");
 
@@ -107,22 +109,61 @@ elScope.oninput = updateOutput;
 elGitmoji.oninput = updateOutput;
 elDescription.oninput = updateOutput;
 
-elOutput.onclick = () => {
+elCopy.onclick = () => {
   navigator.clipboard
     .writeText(elOutput.textContent)
-    .then(() => toast("📋 Successfully copied commit message to clipboard"))
-    .catch((error) => toast(`❌ Failed to copy to clipboard: ${error}`));
+    .then(() => {
+      toast.success("📋 Successfully copied commit message to clipboard");
+    })
+    .catch((error) => {
+      toast.error(`❌ Failed to copy to clipboard: ${error}`);
+    });
 };
 
-function toast(message) {
-  const elToast = document.createElement("div");
-  elToast.className = "toast";
-  elToast.textContent = message;
-  elToaster.append(elToast);
+elCopyCommit.onclick = () => {
+  const commitCmd = `git commit -m "${elOutput.textContent}"`;
+  navigator.clipboard
+    .writeText(commitCmd)
+    .then(() => {
+      toast.success("📋 Successfully copied commit command to clipboard");
+    })
+    .catch((error) => {
+      toast.error(`❌ Failed to copy to clipboard: ${error}`);
+    });
+};
 
-  setTimeout(() => {
-    elToast.classList.add("animate-out");
-    elToast.ontransitionend = () => elToast.remove();
-    return;
-  }, 2000);
-}
+const toast = (() => {
+  const create = (message) => {
+    const elToast = document.createElement("div");
+    elToast.className = "toast";
+    elToast.textContent = message;
+    return elToast;
+  };
+
+  const display = (elToast) => {
+    elToaster.append(elToast);
+
+    setTimeout(() => {
+      elToast.classList.add("animate-out");
+      elToast.ontransitionend = () => elToast.remove();
+    }, 2000);
+  };
+
+  return {
+    info: (message) => {
+      const elToast = create(message);
+      elToast.classList.add("info");
+      display(elToast);
+    },
+    success: (message) => {
+      const elToast = create(message);
+      elToast.classList.add("success");
+      display(elToast);
+    },
+    error: (message) => {
+      const elToast = create(message);
+      elToast.classList.add("error");
+      display(elToast);
+    },
+  };
+})();
