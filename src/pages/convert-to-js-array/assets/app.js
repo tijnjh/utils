@@ -26,11 +26,11 @@
             })(
               (function (it) {
                 return it.split("\n");
-              })(e.target.value)
-            )
-          )
-        )
-      )
+              })(e.target.value),
+            ),
+          ),
+        ),
+      ),
     ));
   };
 }).call(this);

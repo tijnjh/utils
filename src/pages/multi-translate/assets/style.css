@@ -7,6 +7,11 @@
   line-heigth: 1.5rem;
 }
 
+h1 {
+  font-size: 1.5rem;
+  margin-block-end: 1rem;
+}
+
 body {
   font-family: system-ui;
   background-color: #f4f4f4;
