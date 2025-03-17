@@ -7,8 +7,6 @@ const elOutput = document.getElementById("output");
 const elCopy = document.getElementById("copy");
 const elCopyCommit = document.getElementById("copy-commit");
 
-const elToaster = document.getElementById("toaster");
-
 const commitTypes = Object.freeze([
   {
     type: "feat",
@@ -69,12 +67,12 @@ const commitTypes = Object.freeze([
   },
 ]);
 
-commitTypes.forEach(({ type, category, description }) => {
+for (const { type, category, description } of commitTypes) {
   const elTypeOption = document.createElement("option");
   elTypeOption.textContent = `${type}: ${category} (${description})`;
   elTypeOption.value = type;
   elType.append(elTypeOption);
-});
+}
 
 async function fetchGitmoji() {
   const url =
@@ -83,14 +81,13 @@ async function fetchGitmoji() {
   return response;
 }
 
-fetchGitmoji().then((r) => {
-  const gitmojis = r.gitmojis;
-  gitmojis.forEach(({ emoji, description }) => {
+fetchGitmoji().then(({ gitmojis }) => {
+  for (const { emoji, description } of gitmojis) {
     const elGitmojiOption = document.createElement("option");
     elGitmojiOption.textContent = `${description}`;
     elGitmojiOption.value = emoji;
     elGitmojis.append(elGitmojiOption);
-  });
+  }
 });
 
 function updateOutput() {
@@ -99,9 +96,8 @@ function updateOutput() {
   const gitmoji = elGitmoji.value;
   const description = elDescription.value;
 
-  elOutput.textContent = `${type}${
-    !!scope ? `(${scope})` : ""
-  }: ${gitmoji} ${description}`;
+  // prettier-ignore
+  elOutput.textContent = `${type}${ !!scope ? `(${scope})` : ""}: ${gitmoji} ${description}`;
 }
 
 elType.oninput = updateOutput;
