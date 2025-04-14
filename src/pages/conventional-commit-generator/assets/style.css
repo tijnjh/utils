@@ -6,9 +6,14 @@
 body {
   background-color: var(--color-nord0);
   color: var(--color-nord6);
+}
+
+.wrap {
+  display: grid;
+  grid-template-columns: 75% 25%;
   margin: 0 auto;
   padding: 1rem;
-  max-width: 500px;
+  max-width: 1000px;
 }
 
 label {

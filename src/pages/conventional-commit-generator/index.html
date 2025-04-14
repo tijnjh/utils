@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -12,33 +12,39 @@
   </head>
   <body>
     <div class="wrap">
-      <h1 style="view-transition-name: conventional-commit-generator">
-        conventional commit generator
-      </h1>
-      <label>
-        Select the type of change you're committing
-        <select id="type"></select>
-      </label>
+      <main>
+        <h1 style="view-transition-name: conventional-commit-generator">
+          conventional commit generator
+        </h1>
+        <label>
+          Select the type of change you're committing
+          <select id="type"></select>
+        </label>
 
-      <label>
-        Select the scope of this change (optional)
-        <input id="scope" />
-      </label>
+        <label>
+          Select the scope of this change (optional)
+          <input id="scope" />
+        </label>
 
-      <label>
-        Choose a gitmoji
-        <input id="gitmoji" list="gitmojis" />
-      </label>
-      <datalist id="gitmojis"></datalist>
+        <label>
+          Choose a gitmoji
+          <input id="gitmoji" list="gitmojis" />
+        </label>
+        <datalist id="gitmojis"></datalist>
 
-      <label>
-        Write a short, imperative tense description of the change
-        <input id="description" />
-      </label>
+        <label>
+          Write a short, imperative tense description of the change
+          <input id="description" />
+        </label>
 
-      <div id="output"></div>
-      <button id="copy">copy</button>
-      <button id="copy-commit">copy as commit</button>
+        <div id="output"></div>
+        <button id="copy">copy</button>
+        <button id="copy-commit">copy as commit</button>
+      </main>
+      <aside>
+        <h3>history</h3>
+        <ul data-history></ul>
+      </aside>
     </div>
 
     <div id="toaster"></div>

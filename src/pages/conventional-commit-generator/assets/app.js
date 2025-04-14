@@ -7,6 +7,8 @@ const elOutput = document.getElementById("output");
 const elCopy = document.getElementById("copy");
 const elCopyCommit = document.getElementById("copy-commit");
 
+const elHistory = document.querySelector("[data-history]");
+
 const commitTypes = Object.freeze([
   {
     type: "feat",
@@ -105,7 +107,36 @@ elScope.oninput = updateOutput;
 elGitmoji.oninput = updateOutput;
 elDescription.oninput = updateOutput;
 
+localStorage.setItem("history", localStorage.getItem("history") ?? "[]");
+
+function updateHistoryDisplay() {
+  elHistory.innerHTML = "";
+  for (const item of JSON.parse(localStorage.history)) {
+    const elItem = document.createElement("li");
+    elItem.textContent = item;
+    elHistory.prepend(elItem);
+  }
+}
+
+updateHistoryDisplay();
+
+function pushHistory() {
+  let history = JSON.parse(localStorage.history);
+
+  const output = elOutput.textContent;
+
+  if (!output) return;
+  if (history[history.length - 1] === output) return;
+
+  history.push(output);
+
+  localStorage.history = JSON.stringify(history);
+
+  updateHistoryDisplay();
+}
+
 elCopy.onclick = () => {
+  pushHistory();
   navigator.clipboard
     .writeText(elOutput.textContent)
     .then(() => {
@@ -117,6 +148,7 @@ elCopy.onclick = () => {
 };
 
 elCopyCommit.onclick = () => {
+  pushHistory();
   const commitCmd = `git commit -m "${elOutput.textContent}"`;
   navigator.clipboard
     .writeText(commitCmd)
