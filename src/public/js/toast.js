@@ -1,3 +1,5 @@
+const elToaster = document.getElementById("toaster");
+
 const toast = (() => {
   const create = (message) => {
     const elToast = document.createElement("div");
