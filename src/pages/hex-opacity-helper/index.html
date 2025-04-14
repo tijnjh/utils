@@ -1,45 +1,65 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Hex opacity helper</title>
     <link rel="stylesheet" href="./assets/style.css" />
     <script src="./assets/app.js" defer></script>
-</head>
+  </head>
 
-<body>
+  <body>
     <h1>Hex opacity helper</h1>
 
     <div class="container">
-        <div class="input-group">
-            <label for="opacity">Opacity Value (0-1):</label>
-            <input type="number" id="opacity" min="0" max="1" step="0.01" value="0.5"
-                oninput="updateSlider(); convertOpacity();">
-            <input type="range" id="opacitySlider" min="0" max="1" step="0.01" value="0.5"
-                oninput="updateInput(); convertOpacity();">
-        </div>
+      <div class="input-group">
+        <label for="opacity">Opacity Value (0-1):</label>
+        <input
+          type="number"
+          id="opacity"
+          min="0"
+          max="1"
+          step="0.01"
+          value="0.5"
+          oninput="updateSlider(); convertOpacity();"
+        />
+        <input
+          type="range"
+          id="opacitySlider"
+          min="0"
+          max="1"
+          step="0.01"
+          value="0.5"
+          oninput="updateInput(); convertOpacity();"
+        />
+      </div>
 
-        <div class="input-group">
-            <label for="color">Base Color (Hex):</label>
-            <input type="text" id="color" value="#3498db" oninput="convertOpacity()">
-        </div>
+      <div class="input-group">
+        <label for="color">Base Color (Hex):</label>
+        <input
+          type="text"
+          id="color"
+          value="#3498db"
+          oninput="convertOpacity()"
+        />
+      </div>
 
-        <div class="result">
-            <p><strong>Opacity in Hex:</strong> <span id="hexOpacity">80</span></p>
-            <p><strong>Full RGBA Hex:</strong> <span id="fullHex">#3498db80</span>
-                <button class="copy-btn" onclick="copyToClipboard('fullHex')">Copy</button>
-            </p>
-        </div>
+      <div class="result">
+        <p><strong>Opacity in Hex:</strong> <span id="hexOpacity">80</span></p>
+        <p>
+          <strong>Full RGBA Hex:</strong> <span id="fullHex">#3498db80</span>
+          <button class="copy-btn" onclick="copyToClipboard('fullHex')">
+            Copy
+          </button>
+        </p>
+      </div>
 
-        <div class="color-preview">
-            <div class="color-box" id="colorPreview"></div>
-            <div>
-                <p>Color preview with the selected opacity</p>
-            </div>
+      <div class="color-preview">
+        <div class="color-box" id="colorPreview"></div>
+        <div>
+          <p>Color preview with the selected opacity</p>
         </div>
+      </div>
     </div>
-</body>
-
+  </body>
 </html>
