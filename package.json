@@ -1,8 +1,16 @@
 {
-  "main": "src/main.js",
+  "module": "src/index.ts",
   "type": "module",
+  "private": true,
+  "devDependencies": {
+    "@types/bun": "latest",
+    "@types/express": "^5.0.3"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  },
   "dependencies": {
     "ejs": "^3.1.10",
-    "express": "^4.21.2"
+    "express": "^5.1.0"
   }
 }

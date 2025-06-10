@@ -1,7 +1,7 @@
 import express from "express";
-import fs from "fs/promises";
-import path from "path";
-import { fileURLToPath } from "url";
+import fs from "node:fs/promises";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
 
 const PORT = 4200;
 
@@ -18,7 +18,7 @@ app.use(express.static(path.join(__dirname, "pages")));
 
 const dirs = await fs.readdir("src/pages");
 
-const pages = [];
+const pages: string[] = [];
 
 await Promise.all(
   dirs.map(async (dir) => {
