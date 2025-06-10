@@ -98,7 +98,7 @@ function updateOutput() {
   const gitmoji = elGitmoji.value;
   const description = elDescription.value;
 
-  // prettier-ignore
+  // deno-fmt-ignore
   elOutput.textContent = `${type}${ !!scope ? `(${scope})` : ""}: ${gitmoji} ${description}`;
 }
 
